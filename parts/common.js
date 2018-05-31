@@ -30,6 +30,7 @@ var patterns = {
 var types = {
   season: 'integer',
   episode: 'integer',
+  date: 'date',
   year: 'integer',
   extended: 'boolean',
   hardcoded: 'boolean',
@@ -59,6 +60,9 @@ core.on('start', function() {
 
       if(types[key] && types[key] === 'boolean') {
         clean = true;
+      }
+      else if (types[key] && types[key] === 'date') {
+        clean = match[index.raw];
       }
       else {
         clean = match[index.clean];
